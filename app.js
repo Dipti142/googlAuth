@@ -5,12 +5,22 @@ const cors = require('cors');
 const passport = require('./config/passport');
 const session = require('express-session');
 const authRoutes = require('./routes/authRoutes');
+const productsRoutes = require('./routes/productRoutes');
+const ordersRoutes = require('./routes/orderRouter');
+
 
 const app = express();
+// app.get('/api/auth/google/callback', 
+//     passport.authenticate('google', {
+//         successRedirect: '/dashboard', // Redirect on success
+//         failureRedirect: '/login'     // Redirect on failure
+//     })
+// );
 
 // Middleware
 app.use(express.json());
 app.use(cors());
+
 
 // Session (Required for Passport)
 app.use(session({
@@ -23,7 +33,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/api/auth', authRoutes);
+app.use('/api/v1/user', authRoutes);
+app.use('/api/v1/products', productsRoutes);
+app.use('/api/v1/orders', ordersRoutes);
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, { 
