@@ -1,7 +1,12 @@
-const express = require("express");
-const passport = require("passport");
-const { googleAuth, googleCallback } = require("../controllers/authController");
+const express = require('express');
+const { googleAuth, sendOtp } = require('../controllers/authController');
 const router = express.Router();
-router.get("/google", googleAuth);
-router.get("/google/callback", passport.authenticate("google"), googleCallback);
+
+router.post('/google', googleAuth);
+router.post('/otp', sendOtp);
+
 module.exports = router;
+
+
+
+
