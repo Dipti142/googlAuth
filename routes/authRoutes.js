@@ -1,12 +1,13 @@
-const express = require('express');
-const { googleAuth, sendOtp } = require('../controllers/authController');
+
+const express = require("express");
+const { register, login, logout } = require("../controllers/authController");
+
 const router = express.Router();
 
-router.post('/google', googleAuth);
-router.post('/otp', sendOtp);
+router.post("/register", register);
+router.post("/login", login);
+router.post("/logout", logout);
 
-module.exports = router;
-
-
+module.exports=router;
 
 
