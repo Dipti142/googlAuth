@@ -3,11 +3,7 @@ const  Order = require("../models/order");
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
 
-// Correct usage with new
 
-
-
-//Create an Order API:
 const createOrder = async (req, res) => {
     try {
         const { productId, quantity } = req.body;
@@ -19,7 +15,7 @@ const createOrder = async (req, res) => {
         // }
         
 
-// Use mongoose.Types.ObjectId
+
 const product = await Product.find({ _id: new ObjectId(productId) });
 console.log(product);
         
@@ -43,8 +39,7 @@ console.log(product);
     }
 };
 
-//4. Get User Orders with Monthly Summary
-//Fetch User Orders:
+
 
 const getUserOrders = async (req, res) => {
     try {
@@ -64,7 +59,6 @@ const getUserOrders = async (req, res) => {
     }
 };
 
-//5. Find Best-Selling Products (Last 7 Days)
 
 const bestSellingProducts = async (req, res) => {
     try {
